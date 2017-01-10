@@ -1,0 +1,48 @@
+
+<ion-header>
+
+  <ion-navbar color="blue">
+    <ion-title>Confirmation</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding persistent="true">
+	<section *ngIf="stage1">
+		<h4 text-center>Confirm your mobile number</h4>
+		<p text-center>After confirmation phone number you will get an OTP on your registered mobile number.</p>
+		<br />
+
+		<ion-list >
+
+	    <ion-item >
+	      <ion-input type="text" placeholder="Phone Number" [(ngModel)]="mobileNo"></ion-input>
+	    </ion-item>
+	    <p class="validAlert" *ngIf="!isValid(10)">Enter Valid Mobile No.</p>
+	  </ion-list>
+
+		<button ion-button margin-top color="blue" text-capitalize round block [disabled]="!isValid(10)" (click)="makeActive(2)">Send OTP</button>
+	</section>
+
+	<section *ngIf="stage2">
+		<h4 text-center>Enter OTP</h4>
+		<p text-center>Enter the 6 digit OTP i.e. {{ran}} send to +91{{mobileNo}} </p>
+		<br />
+
+		<ion-list >
+
+	    <ion-item >
+	      <ion-input type="text" placeholder="xxxxxx" size="6" [(ngModel)]="otp"></ion-input>
+	    </ion-item>
+
+	  </ion-list>
+		<button ion-button margin-top color="blue" text-capitalize round block [disabled]="!isMatch()"(click)="openSite()">Continue</button>
+
+		<ion-row margin-top>
+			<ion-col width-50 text-left (click)="makeActive(1)"><ion-icon name="phone-portrait"></ion-icon> Change my number</ion-col>
+			<ion-col width-50 text-right (click)="genOTP()"><ion-icon name="refresh"></ion-icon> Resend OTP</ion-col>
+		</ion-row>
+	
+	</section>
+</ion-content>

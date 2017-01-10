@@ -1,0 +1,29 @@
+<!--
+  Generated template for the SelectCourse page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header >
+
+  <ion-navbar color="blue">
+    <ion-title>Select Course</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content persistent="true">
+
+	<ion-list >
+	  <ion-item *ngFor="let c of course" (click)="openSignup()">
+
+	    <ion-avatar item-left>
+	      <img src="assets/images/{{c.image}}">
+	    </ion-avatar>
+	    <h2>{{c.title}}</h2>
+
+	  </ion-item>
+	</ion-list>
+
+</ion-content>
